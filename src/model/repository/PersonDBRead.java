@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface PersonDBRead {
 
-    List<Person> findByall()throws Exception;
+    List<Person> findByall() throws Exception;
 
-    Person findById(String id)throws Exception;
+    Person findById(String id) throws Exception;
 
     void close()throws Exception;
 }
