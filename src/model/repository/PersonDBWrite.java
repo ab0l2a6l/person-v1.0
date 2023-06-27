@@ -10,6 +10,8 @@ public interface PersonDBWrite {
 
     void delete(String id)throws Exception;
 
+    void update(Person person)throws Exception;
+
     void close()throws Exception;
 
 }

@@ -49,6 +49,14 @@ public class PersonDB implements PersonDBRead , PersonDBWrite{
     }
 
     @Override
+    public void update(Person person) throws Exception {
+        preparedStatement = connection.prepareStatement("update table person2 set (name=?)where id =?");
+        preparedStatement.setString(1,person.getName());
+        preparedStatement.setString(2, person.getId());
+        preparedStatement.executeUpdate();
+    }
+
+    @Override
     public void close() throws Exception {
         connection.close();
         preparedStatement.close();
