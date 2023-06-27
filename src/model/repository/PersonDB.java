@@ -49,7 +49,7 @@ public class PersonDB implements PersonDBRead, PersonDBWrite {
 
     @Override
     public void update(Person person) throws Exception {
-        preparedStatement = connection.prepareStatement("update table person2 set (name=?)where id =?");
+        preparedStatement = connection.prepareStatement("update  person2 set name=? where id =?");
         preparedStatement.setString(1, person.getName());
         preparedStatement.setString(2, person.getId());
         preparedStatement.executeUpdate();
@@ -77,9 +77,10 @@ public class PersonDB implements PersonDBRead, PersonDBWrite {
         preparedStatement = connection.prepareStatement("select * from person2 where id = ?");
         preparedStatement.setString(1, id);
         ResultSet set = preparedStatement.executeQuery();
-        set.next();
-        person.setId(set.getString("id"));
-        person.setName(set.getString("name"));
+        if (set.next()) {
+            person.setId(set.getString("id"));
+            person.setName(set.getString("name"));
+        }
         return person;
     }
 
