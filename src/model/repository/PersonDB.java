@@ -42,6 +42,13 @@ public class PersonDB implements PersonDBRead , PersonDBWrite{
     }
 
     @Override
+    public void delete(String id) throws Exception {
+        preparedStatement =connection.prepareStatement("delete from person2 where id = ?");
+        preparedStatement.setString(1,id);
+        preparedStatement.executeUpdate();
+    }
+
+    @Override
     public void close() throws Exception {
         connection.close();
         preparedStatement.close();

@@ -8,6 +8,8 @@ public interface PersonDBWrite {
 
     void insert(Person person)throws Exception;
 
+    void delete(String id)throws Exception;
+
     void close()throws Exception;
 
 }
