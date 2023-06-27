@@ -1,5 +1,7 @@
 package model.repository;
 
+import model.entity.Person;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -29,6 +31,14 @@ public class PersonDB implements PersonDBRead , PersonDBWrite{
             System.out.println("table created");
         }catch (SQLSyntaxErrorException ignored) {
         }
+    }
+
+    @Override
+    public void insert(Person person) throws Exception {
+        preparedStatement = connection.prepareStatement("insert into person2 values(? , ?)");
+        preparedStatement.setString(1,person.getId());
+        preparedStatement.setString(2,person.getName());
+        preparedStatement.executeUpdate();
     }
 
     @Override
